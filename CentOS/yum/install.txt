@@ -1,0 +1,30 @@
+########################################
+#############CENTOS 5 ##################
+########################################
+rpm -Uhv http://nginx.org/packages/centos/5/noarch/RPMS/nginx-release-centos-5-0.el5.ngx.noarch.rpm
+rpm -Uhv http://centos.alt.ru/repository/centos/5/x86_64/centalt-release-5-3.noarch.rpm
+rpm -Uhv http://mirrors.sohu.com/fedora-epel/5/x86_64/epel-release-5-4.noarch.rpm
+rpm -Uhv http://dl.iuscommunity.org/pub/ius/stable/Redhat/5/x86_64/ius-release-1.0-11.ius.el5.noarch.rpm
+#rpm -Uhv http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.x86_64.rpm
+
+rpm -Uhv http://rpms.famillecollet.com/enterprise/remi-release-5.rpm
+yum install -y system-config-network-tui setuptool
+#######################################
+#######################################
+
+
+
+
+########################################
+#############CENTOS 6 ##################
+########################################
+rpm -Uhv  http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm 
+rpm -Uhv http://centos.alt.ru/repository/centos/6/x86_64/centalt-release-6-1.noarch.rpm
+rpm -Uhv http://mirrors.ustc.edu.cn/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm -Uhv http://dl.iuscommunity.org/pub/ius/stable/Redhat/6/x86_64/ius-release-1.0-10.ius.el6.noarch.rpm
+# rpm -Uhv http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm
+rpm -Uhv http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+yum install -y system-config-network-tui setuptool ntsysv
+#######################################
+#######################################
+
