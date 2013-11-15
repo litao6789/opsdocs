@@ -1,3 +1,0 @@
-# EPEL REPO
-
-yum install php-fpm php-mcrypt 
