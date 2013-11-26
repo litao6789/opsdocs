@@ -1,0 +1,44 @@
+#iscsi
+
+iscsi
+
+sudo apt-get install open-iscsi multipath-tools -y
+update-rc.d open-iscsi enable  2345
+
+
+service open-iscsi restart
+
+/etc/iscsi/iscsid.conf
+node.startup = automatic
+
+sudo iscsiadm -m discovery -t st -p 172.16.110.20
+
+sudo iscsiadm -m node --login
+
+##
+iscsiadm  -m  discovery -t st -p 10.1.6.89
+iscsiadm  -m  node
+iscsiadm  -m node -T iqn.2012-10.com.guol:storage.lun1 -p 10.1.6.89:3260 -l
+
+
+## iscsi target server
+sudo apt-get install chkconfig lvm2 iscsitarget iscsitarget-dkms
+
+parted /dev/sdb mklabel gpt
+parted /dev/sdb mkpart primary xfs 1 100%
+
+mkfs.xfs -L data /dev/sdb1
+
+
+
+sudo vgcreate -s 32M vg_target00 /dev/sda2
+
+修改文件/etc/default/iscsitarget，启用iSCSI Target服务：
+
+ISCSITARGET_ENABLE=true
+修改文件/etc/iet/ietd.conf，配置iSCSI Target服务的参数（这里假定使用iSCSI Target服务的机器IP为192.168.100.104）：
+
+Target iqn.2013-03.world.server:target0
+Lun 0 Path=/dev/mapper/vg_target00-lv_target00,Type=blockio
+initiator-address 192.168.100.104
+incominguser test_user test_pass

@@ -1,0 +1,15 @@
+CentOS.txt
+
+sed  -i 's/^LANG=.*$/LANG="en_US.UTF-8"/g'  /etc/sysconfig/i18n
+
+setenforce 0  &&  sed  -i 's/^SELINUX=.*$/SELINUX=disabled/g'  /etc/selinux/config
+
+
+sed -i 's/^UseDNS.*$//g'  /etc/ssh/sshd_config 
+echo 'UseDNS no' >>  /etc/ssh/sshd_config
+/etc/init.d/sshd restart
+
+
+sed -i 's/^%wheel.*$//g'  /etc/sudoers 
+echo '%wheel        ALL=(ALL)       NOPASSWD: ALL' >> /etc/sudoers
+

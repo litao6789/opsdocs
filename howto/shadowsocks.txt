@@ -1,0 +1,16 @@
+
+# shadowsocks-libuv
+
+yum install git openssl-devel
+git clone --recursive https://github.com/dndx/shadowsocks-libuv.git
+cd shadowsocks-libuv/
+
+# vim config.h
+
+# change port
+
+make
+
+cp server /bin/sspd
+
+nohup /bin/sspd > /dev/null 2>&1 &

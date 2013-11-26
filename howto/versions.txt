@@ -1,0 +1,5 @@
+ Ruby: you can use rbenv or rvm, but typically rbenv is simpler. 
+ Python, you can use pythonz
+ Node, you can use nvm.
+
+

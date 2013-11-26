@@ -1,0 +1,10 @@
+iptables
+
+sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+
+sudo iptables -A INPUT -p tcp --dport 60020 -j ACCEPT
+
+sudo iptables -A INPUT -p tcp --dport 10050 -j ACCEPT
+
+# centos 
+/etc/init.d/iptables save

@@ -1,0 +1,8 @@
+# EPEL REPO
+
+yum install php-fpm php-mcrypt 
+
+# PHP debug
+
+display_errors = On
+error_reporting  =  E_ALL & ~E_NOTICE

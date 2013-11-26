@@ -1,0 +1,25 @@
+#sshd 
+
+ssh Authentication refused: bad ownership or modes for directory
+
+mkdir -p .ssh
+touch ~/.ssh/authorized_keys
+chmod go-w ~/
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+
+
+=======================================================
+
+Too many authentication failures for root
+
+ssh -vv ip -i key-file -o "IdentitiesOnly yes"
+
+then 
+
+MaxAuthTries 15
+
+-----
+
+
+

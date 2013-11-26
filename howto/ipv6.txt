@@ -1,0 +1,40 @@
+ipv6
+
+google dns ipv6
+2001:4860:4860::8888
+2001:4860:4860::8844
+
+查询ASN号码
+http://asn.cymru.com/cgi-bin/whois.cgi
+
+[Querying v4.whois.cymru.com]
+[v4.whois.cymru.com]
+AS      | IP               | BGP Prefix          | CC | Registry | Allocated  | AS Name
+4847    | 220.181.161.0    | 220.181.161.0/24    | CN | apnic    | 2002-10-30 | CNIX-AP China Networks Inter-Exchange
+v4-peer.whois.cymru.com
+
+The server returned 4 line(s).
+[Querying v4-peer.whois.cymru.com]
+[v4-peer.whois.cymru.com]
+PEER_AS | IP               | BGP Prefix          | CC | Registry | Allocated  | AS Name
+4134    | 220.181.161.0    | 220.181.161.0/24    | CN | apnic    | 2002-10-30 | CHINANET-BACKBONE No.31,Jin-rong Street
+
+
+
+Spine/leaf架构中的Spine
+
+
+数据中心的TOR交换机，都运行了什么功能?三层就是一个OSPF，二层就是LACP，VLAN，FDB，然后就是一些管理功能，比如Mirror, SNMP等，
+
+
+
+L2 层的 MAC、VLAN 等
+L3 层的 source ip, dest ip
+L4 层的 source port, dest port
+
+
+ST 1T ￥449.00 http://item.jd.com/667762.html#product-detail
+东芝   429 http://item.jd.com/543242.html
+
+裸硬盘
+日立 439 http://item.jd.com/632220.html 

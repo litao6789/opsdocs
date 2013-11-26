@@ -1,0 +1,95 @@
+[base]
+name=CentOS-$releasever - Base
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
+#baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+
+#released updates 
+[updates]
+name=CentOS-$releasever - Updates
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates
+#baseurl=http://mirror.centos.org/centos/$releasever/updates/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+
+#additional packages that may be useful
+[extras]
+name=CentOS-$releasever - Extras
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras
+#baseurl=http://mirror.centos.org/centos/$releasever/extras/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-$releasever - Plus
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus
+#baseurl=http://mirror.centos.org/centos/$releasever/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+
+#contrib - packages by Centos Users
+[contrib]
+name=CentOS-$releasever - Contrib
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib
+#baseurl=http://mirror.centos.org/centos/$releasever/contrib/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+
+[CentALT]
+name=CentALT Packages for Enterprise Linux 5 - $basearch
+#baseurl=http://centos.alt.ru/repository/centos/5/$basearch/
+baseurl=http://mirror.neu.edu.cn/CentALT/6/$basearch/
+enabled=1
+gpgcheck=0
+
+[epel]
+name=Extra Packages for Enterprise Linux 5 - $basearch
+#baseurl=http://download.fedoraproject.org/pub/epel/5/$basearch
+mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-5&arch=$basearch
+failovermethod=priority
+enabled=1
+gpgcheck=0
+
+
+[epel-testing]
+name=Extra Packages for Enterprise Linux 5 - Testing - $basearch 
+#baseurl=http://download.fedoraproject.org/pub/epel/testing/5/$basearch
+mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=testing-epel5&arch=$basearch
+failovermethod=priority
+enabled=1
+gpgcheck=0
+
+[ius]
+name=IUS Community Packages for Enterprise Linux 5 - $basearch
+#baseurl=http://dl.iuscommunity.org/pub/ius/stable/Redhat/5/$basearch
+mirrorlist=http://dmirr.iuscommunity.org/mirrorlist/?repo=ius-el5&arch=$basearch
+failovermethod=priority
+enabled=1
+gpgcheck=0
+
+[remi]
+name=Les RPM de remi pour Enterprise Linux 5 - $basearch
+#baseurl=http://rpms.famillecollet.com/enterprise/5/remi/$basearch/
+mirrorlist=http://rpms.famillecollet.com/enterprise/5/remi/mirror
+enabled=1
+gpgcheck=0
+
+[remi-php55]
+name=Les RPM de remi de PHP 5.5 pour Enterprise Linux 5 - $basearch
+#baseurl=http://rpms.famillecollet.com/enterprise/5/php55/$basearch/
+mirrorlist=http://rpms.famillecollet.com/enterprise/5/php55/mirror
+# WARNING: If you enable this repository, you must also enable "remi"
+enabled=0
+gpgcheck=0
+
+
+[WANdisco]
+name=WANdisco SVN Repo 1.8
+enabled=1
+baseurl=http://opensource.wandisco.com/centos/5/svn-1.8/RPMS/$basearch/
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-WANdisco

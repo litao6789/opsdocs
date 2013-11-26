@@ -1,0 +1,21 @@
+SQL
+
+清空当前库的所有表格：
+
+
+declare @trun_name varchar(8000)
+set @trun_name=''
+select @trun_name=@trun_name + 'truncate table ' + [name] + ' ' from sysobjects where xtype='U' and status > 0
+exec (@trun_name)
+
+
+exec sp_msforeachtable "truncate table ?"
+
+
+
+========
+sql server database is not accessible object explorer
+
+use [db_name]
+
+grant connect to [db_user]

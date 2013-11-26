@@ -1,0 +1,37 @@
+out-in-fw-policy
+
+默认允许
+TCP
+80
+443
+
+
+
+拒绝公网访问以下端口
+TCP
+22    #ssh
+3389  #rdp
+3306  #mysql
+1433 #mssql
+1521  #oracle
+5432  #postgresql
+6379 # redis
+27017 # mongodb
+11211 # memcached
+445
+135
+137
+138
+139
+873 #rsync
+
+
+UDP
+137
+138
+139
+5355
+
+161 #SNMP
+162 #SNMP
+
