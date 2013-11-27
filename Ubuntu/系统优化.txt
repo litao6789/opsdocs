@@ -1,0 +1,17 @@
+网络优化
+LVS、Openstack需要关闭gro
+http://jaseywang.me/2013/09/16/rh-6-2-%E5%85%B3%E9%97%AD-gro/
+
+ ethtool --offload eth0 gro off
+
+ or
+
+ ethtool -K eth0 gro off
+
+
+CentOS 6.2+ 
+ /etc/sysconfig/network-scripts/ifcfg-em1 里面指定:
+ETHTOOL_OPTS="-K ${DEVICE} tso on; -G ${DEVICE} rx 256 tx 128"
+
+Ubuntu应该也可以在interface文件里指定？
+

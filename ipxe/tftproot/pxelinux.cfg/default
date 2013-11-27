@@ -1,0 +1,6 @@
+DEFAULT menu.c32
+  PROMPT 1
+  
+  LABEL ipxe
+  MENU LABEL gPXE - chainload gPXE from a PXE capable NIC
+  KERNEL undionly.kkpxe

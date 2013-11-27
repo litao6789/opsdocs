@@ -1,0 +1,15 @@
+dhcp
+
+    host Client {
+      hardware ethernet 00:01:02:03:04:05;			# the mac address of your boot NIC
+      fixed-address 192.168.0.3;				# your client's IP
+      if substring (option vendor-class-identifier, 0, 9) != "Etherboot" {
+        filename "/e1000.zpxe";					# the file made in step 2
+      } else {
+        filename "/aoe.0";					# aoe.0 file found in the archive
+      }
+      # next is root-path, this is dhcp option 17 (0x11) if you have to manually specify it.
+      option root-path "aoe:e0.0";	          		# major and minor id of vblade
+    }
+
+    

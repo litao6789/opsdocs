@@ -1,0 +1,29 @@
+# http://reboot.pro/topic/19015-boot-mini-windows-vhd-from-network-via-ipxe/
+
+# use grub4dos menu.lst options to boot ISO or VHD from RAMDISK loaded via Network
+ 
+:grub4dos
+dhcp net0
+chain ${210:string}grldr || goto failed
+goto start
+ 
+ 
+# ipxe sanboot options for booting 7PE ISO from Network - working OK
+ 
+:7pe_x86_E
+sanboot --no-describe ${boot-url}/images/7pe_x86_E.iso || goto failed
+goto start  
+ 
+# ipxe sanboot options for booting Mini Windows VHD from Network - Not working yet
+ 
+:vhd_xp
+sanboot --no-describe ${boot-url}/XP-1-P.vhd || goto failed
+goto start  
+ 
+:vhd_w7
+sanboot --no-describe ${boot-url}/Win7-1.vhd || goto failed
+goto start  
+ 
+:vhd_w8
+sanboot --no-describe ${boot-url}/Win8-1.vhd || goto failed
+goto start  

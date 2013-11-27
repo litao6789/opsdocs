@@ -1,0 +1,124 @@
+#ipxe
+
+http://www.colino.net/wordpress/archives/2008/05/21/how-to-change-dells-bios-settings-from-a-linux-command-line/
+
+HP BIOS Configuration Utility (BCU) windows
+http://h20331.www2.hp.com/Hpsub/us/en/bios-conf.html
+ftp://203.90.70.117/SEARGS/Drivers/HP/8000%20Elite/Peripherals/BIOS/BIOS%20Configuration%20Utility%20User%20Guide.pdf
+
+
+http://www.hp.com/servers/sstoolkit
+
+www.hp.com/go/ProLiant/STK 
+
+http://www8.hp.com/us/en/products/server-software/product-detail.html?oid=5219389#!tab=features
+
+DELL DTK : raid +bios
+
+http://jaseywang.me/2013/05/18/%E4%BD%BF%E7%94%A8-dtk-%E8%87%AA%E5%8A%A8%E6%89%B9%E9%87%8F%E5%BB%BA%E7%AB%8B-raid/
+---------
+
+/usr/lib/syslinux/memdisk
+
+
+echo Mini WinXP HBCD 14 - AUTOSTART NETWORK & TEAMVIEWER
+initrd /images/mxp14.iso
+chain /memdisk iso raw || goto failed
+goto start
+
+
+----------
+LABEL windows_winvblock
+   LINUX memdisk
+   INITRD windows.iso
+   APPEND iso raw
+
+
+---------------
+dnsmasq (DHCP + DNS ) + ipxe + http + tftp + wimboot + memdisk
+
+apt-get install -y dnsmasq ipxe nginx syslinux #tftpd-hpa
+
+#file puts in /opt
+
+################3
+#interface=eth1
+bind-interfaces
+### Don't forget to open the system firewall!
+
+### General DHCP options
+dhcp-range=192.168.137.50,192.168.137.90,24
+# Speeds up dhcp, but also dangerous where another dhcp server exists
+dhcp-authoritative
+# Log lots of extra information about DHCP transactions.
+log-dhcp
+
+### DNS Options
+# For debugging purposes, log each DNS query as it passes through dnsmasq.
+log-queries
+
+### Tftp Options
+enable-tftp
+tftp-root=/var/lib/tftpboot
+# Make the TFTP server more secure: with this set, only files owned by
+# the user dnsmasq is running as will be send over the net.
+tftp-secure
+
+# dnsmasq configuration for iPXE
+# by stefanl@nersc.gov, 2012-12-01
+
+# Borrowed from http://www.heath-bar.com/projects/blog/?p=326
+# and http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq.conf.example
+
+# Important note: The syntax in this file requires dnsmasq 2.53 or above.
+# RHEL6 ships with dnsmasq 2.48, which uses older syntax.
+
+### Special DHCP options for iPXE
+
+### Borrowed from http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq.conf.example
+# Boot for iPXE. The idea is to send two different
+# filenames, the first loads iPXE, and the second tells iPXE what to
+# load. The dhcp-match sets the ipxe tag for requests from iPXE.
+# Important Note: the 'set:' and 'tag:!ipxe' syntax requires dnsmasq 2.53 or above.
+dhcp-match=set:ipxe,175 # iPXE sends a 175 option.
+# load undionly.kpxe for clients not tagged with 'ipxe'.
+dhcp-boot=tag:!ipxe,undionly.kkpxe
+# undionly.kpxe issues a second DHCP request and we then serve bootstrap.ipxe over http 
+# using Robin Smidsrød's bootstrap method provided at https://gist.github.com/2234639 
+dhcp-boot=http://192.168.137.100/menu.ipxe
+# Or, simply load your own menu
+#dhcp-boot=menu.ipxe
+
+
+
+en_windows_server_2012_vl_x64_dvd_917758.iso
+
+
+
+mkdir -p /var/www/mount/win2012eng
+
+apt-get install vblade
+
+https://help.ubuntu.com/community/ATAOverEthernet
+
+
+#vblade -b 65 0 0 xxx “d:\path_to_you_vhd\windows.vhd”
+#vblade 1 1 eth0 vblade0
+#vblade -b 65 0 0 eth1 /var/www/images/en_windows_server_2012_vl_x64_dvd_917758.iso 
+
+vi /etc/vblade.conf 
+eth1 0 0 /var/www/images/en_windows_server_2012_vl_x64_dvd_917758.iso
+
+
+sanboot --nodescribe --drive 0xe0 http://192.168.1.2/win7/winpe.iso
+
+
+
+---
+http://reboot.pro/topic/17242-grub4dos-in-webboot-enviroment/
+
+label win7pese
+menu label Windows 7 PE
+COM32 linux.c32
+APPEND grub.exe initrd=http://webserver/win7pe.iso --config-file="map (rd)+1 (hd32); map --hook; root (hd32); chainloader (hd32)"
+

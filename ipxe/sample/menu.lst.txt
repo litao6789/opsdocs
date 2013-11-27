@@ -1,0 +1,36 @@
+#Use grldr as the ipxe boot file, and you can map an ISO to memory and boot from it:
+ 
+title 7PE RAMDISK - 7pe_x86_E.iso - 263 MB
+map --mem (pd)/images/7pe_x86_E.iso (0xff)
+map --hook
+chainloader (0xff)
+ 
+title BartPE RAMDISK - LiveXP_WIM.ISO - 168 MB
+map --mem (pd)/images/LiveXP_WIM.ISO (0xff)
+map --hook
+root (0xff)
+chainloader (0xff)
+ 
+title Linux Parted Magic V6.2 - RAMDISK - 168 MB
+kernel (pd)/memdisk iso
+initrd (pd)/images/pmagic/pmagic-6.2.iso
+ 
+# load Mini Windows VHD via ipxe from Network into RAMDISK and boot from it
+ 
+title Portable XP-1-P.vhd - WinVBlock RAMDISK  - 1232 MB
+map --mem (pd)/XP-1-P.vhd (hd0)
+map --hook
+root (hd0,0)
+chainloader /ntldr
+ 
+title Portable Win7-1.vhd - FiraDisk  RAMDISK  - 2000 MB
+map --mem (pd)/Win7-1.vhd (hd0)
+map --hook
+root (hd0,0)
+chainloader /bootmgr
+ 
+title Mini Win8-1.vhd - FiraDisk  RAMDISK  - 2000 MB
+map --mem (pd)/Win8-1.vhd (hd0)
+map --hook
+root (hd0,0)
+chainloader /bootmgr
